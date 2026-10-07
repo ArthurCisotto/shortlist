@@ -1,0 +1,147 @@
+// Smoke check using the existing desktop runtime; no project dependency install.
+const assert = require('node:assert/strict');
+const {execFileSync} = require('node:child_process');
+const path = require('node:path');
+const fs = require('node:fs');
+const os = require('node:os');
+const runtime = process.env.SHORTLIST_PLAYWRIGHT || path.join(os.homedir(), '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium} = require(runtime);
+const root = path.resolve(__dirname, '..');
+const work = fs.mkdtempSync(path.join(os.tmpdir(), 'swipe-ui-'));
+const fragment = path.join(work, 'view.html');
+const prepare = `import runpy, pathlib, sys
+m=runpy.run_path('tests/test_session.py'); s=m['session']; d=m['example']()
+s.save(d,pathlib.Path(sys.argv[1])); s.render(s.load(d['id'],pathlib.Path(sys.argv[1])),pathlib.Path(sys.argv[2]))`;
+execFileSync('python3',['-c',prepare,work,fragment],{cwd:root});
+const wrapper = () => {
+  const markup=fs.readFileSync(fragment,'utf8');
+  fs.writeFileSync(path.join(work,'preview.html'),`<!doctype html><html><body style="margin:0">${markup}</body></html>`);
+};
+wrapper();
+(async()=>{
+  const browser=await chromium.launch({headless:true,channel:'chrome'});
+  try{
+    const page=await browser.newPage({viewport:{width:1024,height:3200}});
+    const errors=[];page.on('pageerror',e=>errors.push(e.message));
+    await page.goto('file://'+path.join(work,'preview.html'));
+    const detail=page.locator('[data-detail]');
+    assert.equal(await detail.locator('h3').innerText(),'Synthetic full');
+    assert.deepEqual(await page.locator('[data-list] button').evaluateAll(es=>es.map(e=>e.dataset.id)),['full','unknown-pref','no-pref','unknown-must','conflict-must']);
+    await detail.locator('textarea').fill('Reason <script>window.bad=true</script>');
+    await detail.getByRole('button',{name:'Save →',exact:true}).press('Enter');
+    assert.equal(await detail.locator('h3').innerText(),'Synthetic unknown-pref');
+    await page.getByRole('button',{name:'Refine',exact:true}).click();
+    await page.locator('[data-feedback]').fill('Keep my feedback when saving');
+    await page.getByRole('button',{name:'Save session',exact:true}).click();
+    assert.match(await page.locator('[data-payload]').inputValue(),/Keep my feedback when saving/);
+    assert.match(await page.locator('[data-saved]').innerText(),/Reason <script>/);
+    assert.equal(await page.evaluate(()=>window.bad),undefined);
+    await detail.getByRole('button',{name:'← Pass',exact:true}).click();
+    await page.getByRole('button',{name:'Undo',exact:true}).click();
+    assert.equal(await detail.locator('h3').innerText(),'Synthetic unknown-pref');
+    await page.getByRole('button',{name:'Review again',exact:true}).click();
+    assert.equal(await detail.locator('h3').innerText(),'Synthetic full');
+    await page.getByRole('button',{name:'Undo',exact:true}).click();
+    await page.getByRole('button',{name:'Save session',exact:true}).click();
+    assert.match(await page.locator('[data-status]').innerText(),/Paste the message/);
+    await page.evaluate(()=>{window.openai={sendFollowUpMessage:p=>{window.captured=p;return Promise.resolve();},setWidgetState:()=>Promise.resolve(),openExternal:p=>{window.external=p;}};});
+    await page.getByRole('button',{name:'Save session',exact:true}).click();
+    const message=await page.evaluate(()=>window.captured.prompt);
+    const payload=JSON.parse(message.split('\n\nSHORTLIST_ACTION\n')[1]);
+    assert.deepEqual(payload.decisions,{full:'save'});
+    assert.equal(payload.notes.full,'Reason <script>window.bad=true</script>');
+    assert.match(await page.locator('[data-save-state]').innerText(),/Unsaved/);
+    assert.match(await page.locator('[data-status]').innerText(),/Await the agent/);
+    await detail.locator('summary').click();
+    await detail.locator('a[data-source]').first().click();
+    assert.deepEqual(await page.evaluate(()=>window.external),{href:'https://example.invalid/source'});
+    await page.getByRole('button',{name:'Refine',exact:true}).click();
+    await page.locator('[data-feedback]').fill('More options, same must-haves');
+    await page.evaluate(()=>window.dispatchEvent(new CustomEvent('openai:set_globals',{detail:{globals:{widgetState:{privateContent:{session_id:'test-restaurant',revision:1,decisions:{},focus:'full'}}}}})));
+    assert.equal(await page.locator('[data-saved] .s-item').count(),1);
+    await page.getByRole('button',{name:'Save & request refinement',exact:true}).click();
+    const refine=JSON.parse((await page.evaluate(()=>window.captured.prompt)).split('\n\nSHORTLIST_ACTION\n')[1]);
+    assert.equal(refine.feedback,'More options, same must-haves');
+    assert.equal(refine.action,'refine');
+    await page.evaluate(()=>window.openai.sendFollowUpMessage=()=>Promise.reject(new Error('unavailable')));
+    await page.getByRole('button',{name:'Save session',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('[data-status]').textContent.includes('could not be submitted'));
+    for(const width of [320,1024]){
+      await page.setViewportSize({width,height:3200});
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1),false);
+      await page.locator('[data-refine]').evaluate(e=>e.hidden=true);
+      await page.locator('[data-fallback]').evaluate(e=>e.hidden=true);
+      await page.locator('[data-detail] details').evaluate(e=>e.open=false);
+      await page.locator('.s-app').screenshot({path:path.join(work,`desk-${width}.png`)});
+    }
+    await page.emulateMedia({colorScheme:'dark'});
+    await page.locator('.s-app').screenshot({path:path.join(work,'desk-dark.png')});
+    fs.writeFileSync(path.join(work,'payload.json'),JSON.stringify(payload));
+    execFileSync('python3',[path.join(root,'skills/shortlist/scripts/session.py'),'apply',path.join(work,'payload.json'),'--directory',work]);
+    const stored=JSON.parse(fs.readFileSync(path.join(work,'test-restaurant.json'),'utf8'));
+    assert.equal(stored.revision,2);
+    assert.equal(stored.notes.full,payload.notes.full);
+    execFileSync('python3',[path.join(root,'skills/shortlist/scripts/session.py'),'render',path.join(work,'test-restaurant.json'),fragment]);
+    wrapper();await page.reload();
+    assert.equal(await page.locator('[data-save-state]').innerText(),'Saved session');
+    assert.match(await page.locator('[data-saved]').innerText(),/Reason <script>/);
+    assert.equal(await detail.locator('h3').innerText(),'Synthetic unknown-pref');
+    // Pointer swipe uses the same decision path as buttons.
+    const box=await detail.locator('.s-profile').boundingBox();
+    await page.mouse.move(box.x+20,box.y+20);await page.mouse.down();
+    await page.mouse.move(box.x+120,box.y+20,{steps:8});await page.mouse.up();
+    assert.equal(await page.locator('[data-saved] .s-item').count(),2);
+    stored.decisions.excluded='save';stored.feedback='Previously saved feedback';
+    fs.writeFileSync(path.join(work,'test-restaurant.json'),JSON.stringify(stored));
+    execFileSync('python3',[path.join(root,'skills/shortlist/scripts/session.py'),'render',path.join(work,'test-restaurant.json'),fragment]);
+    wrapper();await page.reload();
+    assert.equal(await page.locator('[data-feedback]').inputValue(),'Previously saved feedback');
+    assert.equal(await page.locator('[data-save-state]').innerText(),'Saved session');
+    const excluded=page.locator('[data-saved] .s-item').filter({hasText:'Synthetic excluded'});
+    assert.equal(await excluded.locator('details').count(),1);
+    await excluded.getByRole('button',{name:'Remove from shortlist',exact:true}).click();
+    assert.equal(await excluded.count(),0);
+    await page.getByRole('button',{name:'Undo',exact:true}).click();
+    assert.equal(await excluded.count(),1);
+    // One real review flow in Portuguese, with a known listing suppressed.
+    stored.language='pt-BR';stored.decisions={};stored.notes={};stored.feedback='';
+    stored.known_urls=['https://www.airbnb.com.br/rooms/123?adults=5'];
+    stored.candidates=['full','unknown-must'].map(id=>stored.candidates.find(c=>c.id===id));
+    stored.candidates[0].url='https://www.airbnb.com/rooms/123?check_in=2027-03-19';
+    const lead=stored.candidates[1];
+    lead.url='https://www.airbnb.com.br/rooms/456?adults=5';
+    lead.name='Save session';
+    lead.next_step='Confirmar total com taxas <script>window.bad=true</script>';
+    lead.checks.required.lead=true;
+    lead.checks.required.evidence=[{url:'https://example.invalid/source',publisher:'Synthetic source',excerpt:'Partial quote',checked_at:'2026-10-07',scope:'Exact listing; total unresolved'}];
+    fs.writeFileSync(path.join(work,'test-restaurant.json'),JSON.stringify(stored));
+    execFileSync('python3',[path.join(root,'skills/shortlist/scripts/session.py'),'render',path.join(work,'test-restaurant.json'),fragment]);
+    wrapper();await page.reload();
+    assert.equal(await page.locator('[data-list] button').count(),1);
+    assert.equal(await detail.locator('h3').innerText(),'Save session');
+    assert.match(await detail.innerText(),/Indício para verificar · ainda não confirmado/);
+    assert.match(await detail.innerText(),/Próxima verificação: Confirmar total/);
+    assert.match(await detail.innerText(),/Opção parcial/);
+    await page.evaluate(()=>{window.openai={sendFollowUpMessage:p=>{window.captured=p;return Promise.resolve();},setWidgetState:()=>Promise.resolve(),openExternal:p=>{window.external=p;}};});
+    await detail.getByRole('link',{name:'Abrir perfil ou anúncio'}).click();
+    assert.deepEqual(await page.evaluate(()=>window.external),{href:lead.url});
+    await detail.locator('textarea').fill('Gostei, mas confirmar taxas.');
+    await detail.getByRole('button',{name:'Salvar →',exact:true}).click();
+    await page.getByRole('button',{name:'Salvar sessão',exact:true}).click();
+    const portuguese=JSON.parse((await page.evaluate(()=>window.captured.prompt)).split('\n\nSHORTLIST_ACTION\n')[1]);
+    assert.deepEqual(portuguese.decisions,{'unknown-must':'save'});
+    assert.equal(portuguese.notes['unknown-must'],'Gostei, mas confirmar taxas.');
+    assert.match(await page.locator('[data-save-state]').innerText(),/Alterações pendentes/);
+    await page.getByRole('button',{name:'Refinar',exact:true}).click();
+    await page.locator('[data-feedback]').fill('Verificar valor final.');
+    await page.getByRole('button',{name:'Salvar e pedir nova busca',exact:true}).click();
+    assert.equal(JSON.parse((await page.evaluate(()=>window.captured.prompt)).split('\n\nSHORTLIST_ACTION\n')[1]).action,'refine');
+    assert.equal(await page.evaluate(()=>window.bad),undefined);
+    for(const width of [320,1024]){
+      await page.setViewportSize({width,height:3200});
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1),false);
+    }
+    assert.deepEqual(errors,[]);
+    console.log('PASS: ranking, keyboard save/pass/undo/revisit, safe reasons, explicit save/refine payloads, source bridge, failure fallback, file acknowledgement/resume, swipe, 320/1024px and dark theme. Native delivery still requires a Codex click. Screenshots: '+work);
+  }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,367 @@
+{
+  "version": 1,
+  "id": "demo-friday-dinner",
+  "revision": 0,
+  "demo": true,
+  "language": "en",
+  "title": "Friday dinner, without the guesswork",
+  "query": "Pinheiros · after 10 pm · up to R$120 per person · vegetarian mains",
+  "confirmed": true,
+  "criteria": [
+    {
+      "id": "hours",
+      "label": "Dinner after 10 pm Friday",
+      "kind": "must"
+    },
+    {
+      "id": "budget",
+      "label": "Up to R$120 per person",
+      "kind": "must"
+    },
+    {
+      "id": "vegetarian",
+      "label": "Vegetarian main dishes",
+      "kind": "must"
+    },
+    {
+      "id": "quiet",
+      "label": "Quiet enough to talk",
+      "kind": "preference"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "jardim-da-mesa",
+      "name": "Jardim da Mesa",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://jardim-da-mesa.example.invalid/",
+      "summary": "A small garden dining room with vegetarian mains and late Friday service.",
+      "checks": {
+        "hours": {
+          "status": "meets",
+          "summary": "Kitchen serves until 11 pm on Fridays.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/hours",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Friday kitchen hours: 6 pm–11 pm.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "A main and non-alcoholic drink total R$98 with service.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/budget",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Sample dinner: main R$72 + drink R$17 + 10% service = R$97.90.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "meets",
+          "summary": "Two vegetarian mains are listed.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/vegetarian",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Vegetarian mains: mushroom risotto and roasted pumpkin with lentils.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "meets",
+          "summary": "The demo venue describes a quiet dining room.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/quiet",
+              "publisher": "Demo restaurant website",
+              "excerpt": "A small dining room with no amplified music.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "casa-aurora",
+      "name": "Casa Aurora",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://casa-aurora.example.invalid/",
+      "summary": "A courtyard favorite. Menu and Friday hours fit; the noise level is unverified.",
+      "checks": {
+        "hours": {
+          "status": "meets",
+          "summary": "Kitchen serves until 11 pm on Fridays.",
+          "evidence": [
+            {
+              "url": "https://casa-aurora.example.invalid/hours",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Friday kitchen hours: 6 pm–11 pm.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "A main and non-alcoholic drink total R$98 with service.",
+          "evidence": [
+            {
+              "url": "https://casa-aurora.example.invalid/budget",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Sample dinner: main R$72 + drink R$17 + 10% service = R$97.90.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "meets",
+          "summary": "Two vegetarian mains are listed.",
+          "evidence": [
+            {
+              "url": "https://casa-aurora.example.invalid/vegetarian",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Vegetarian mains: mushroom risotto and roasted pumpkin with lentils.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "unknown",
+          "summary": "Courtyard noise has not been verified.",
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "mesa-27",
+      "name": "Mesa 27",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://mesa-27.example.invalid/",
+      "summary": "The menu fits. A late reservation slot needs a kitchen-hours check.",
+      "checks": {
+        "hours": {
+          "status": "unknown",
+          "summary": "A 10:30 pm booking exists; kitchen closing time is not stated.",
+          "evidence": [
+            {
+              "url": "https://mesa-27.example.invalid/hours",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Friday reservation calendar includes a 10:30 pm seating.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ],
+          "lead": true
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "A main and non-alcoholic drink total R$98 with service.",
+          "evidence": [
+            {
+              "url": "https://mesa-27.example.invalid/budget",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Sample dinner: main R$72 + drink R$17 + 10% service = R$97.90.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "meets",
+          "summary": "Two vegetarian mains are listed.",
+          "evidence": [
+            {
+              "url": "https://mesa-27.example.invalid/vegetarian",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Vegetarian mains: mushroom risotto and roasted pumpkin with lentils.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "meets",
+          "summary": "The demo venue describes a quiet dining room.",
+          "evidence": [
+            {
+              "url": "https://mesa-27.example.invalid/quiet",
+              "publisher": "Demo restaurant website",
+              "excerpt": "A small dining room with no amplified music.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        }
+      },
+      "next_step": "Confirm Friday kitchen hours before treating the late seating as a match."
+    },
+    {
+      "id": "patio-norte",
+      "name": "Pátio Norte",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://patio-norte.example.invalid/",
+      "summary": "A promising patio, with contradictory Friday closing times.",
+      "checks": {
+        "hours": {
+          "status": "conflicting",
+          "summary": "Website says 9:30 pm; reservation page offers 10:30 pm.",
+          "evidence": [
+            {
+              "url": "https://patio-norte.example.invalid/hours",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Friday dinner service ends at 9:30 pm.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            },
+            {
+              "url": "https://patio-norte.example.invalid/booking",
+              "publisher": "Demo reservation page",
+              "excerpt": "Last Friday dinner seating: 10:30 pm.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only"
+            }
+          ]
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "A main and non-alcoholic drink total R$98 with service.",
+          "evidence": [
+            {
+              "url": "https://patio-norte.example.invalid/budget",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Sample dinner: main R$72 + drink R$17 + 10% service = R$97.90.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "meets",
+          "summary": "Two vegetarian mains are listed.",
+          "evidence": [
+            {
+              "url": "https://patio-norte.example.invalid/vegetarian",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Vegetarian mains: mushroom risotto and roasted pumpkin with lentils.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "meets",
+          "summary": "The demo venue describes a quiet dining room.",
+          "evidence": [
+            {
+              "url": "https://patio-norte.example.invalid/quiet",
+              "publisher": "Demo restaurant website",
+              "excerpt": "A small dining room with no amplified music.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        }
+      },
+      "next_step": "Resolve the closing-time conflict with the branch before booking."
+    },
+    {
+      "id": "bistro-vila",
+      "name": "Bistrô Vila",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://bistro-vila.example.invalid/",
+      "summary": "Late service and a quiet room, but no vegetarian mains on the demo menu.",
+      "checks": {
+        "hours": {
+          "status": "meets",
+          "summary": "Kitchen serves until 11 pm on Fridays.",
+          "evidence": [
+            {
+              "url": "https://bistro-vila.example.invalid/hours",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Friday kitchen hours: 6 pm–11 pm.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "A main and non-alcoholic drink total R$98 with service.",
+          "evidence": [
+            {
+              "url": "https://bistro-vila.example.invalid/budget",
+              "publisher": "Demo restaurant website",
+              "excerpt": "Sample dinner: main R$72 + drink R$17 + 10% service = R$97.90.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "fails",
+          "summary": "Only sides are vegetarian.",
+          "evidence": [
+            {
+              "url": "https://bistro-vila.example.invalid/vegetarian",
+              "publisher": "Demo restaurant website",
+              "excerpt": "All mains contain meat; vegetarian sides only.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "meets",
+          "summary": "The demo venue describes a quiet dining room.",
+          "evidence": [
+            {
+              "url": "https://bistro-vila.example.invalid/quiet",
+              "publisher": "Demo restaurant website",
+              "excerpt": "A small dining room with no amplified music.",
+              "checked_at": "2026-10-07",
+              "scope": "Fictional Pinheiros branch; Friday dinner; illustrative only",
+              "declared": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "decisions": {
+    "casa-aurora": "save"
+  },
+  "notes": {
+    "casa-aurora": "Love the courtyard. Check how quiet it is on a Friday."
+  },
+  "feedback": ""
+}

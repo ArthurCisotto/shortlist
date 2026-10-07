@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "id": "demo-jantar-sexta",
+  "revision": 0,
+  "demo": true,
+  "language": "pt-BR",
+  "title": "Um jantar com tudo o que importa",
+  "query": "Pinheiros · sexta após 22h · até R$120 por pessoa · pratos vegetarianos",
+  "confirmed": true,
+  "criteria": [
+    {
+      "id": "hours",
+      "label": "Jantar na sexta após 22h",
+      "kind": "must"
+    },
+    {
+      "id": "budget",
+      "label": "Até R$120 por pessoa",
+      "kind": "must"
+    },
+    {
+      "id": "vegetarian",
+      "label": "Pratos principais vegetarianos",
+      "kind": "must"
+    },
+    {
+      "id": "quiet",
+      "label": "Tranquilo para conversar",
+      "kind": "preference"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "jardim-da-mesa",
+      "name": "Jardim da Mesa",
+      "location": "Pinheiros · São Paulo",
+      "url": "https://jardim-da-mesa.example.invalid/",
+      "summary": "Uma pequena sala de jantar com jardim, pratos vegetarianos e serviço até tarde.",
+      "checks": {
+        "hours": {
+          "status": "meets",
+          "summary": "Cozinha aberta até 23h às sextas.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/hours",
+              "publisher": "Site fictício do restaurante",
+              "excerpt": "Horário da cozinha na sexta: 18h–23h.",
+              "checked_at": "2026-10-07",
+              "scope": "Unidade fictícia em Pinheiros; jantar de sexta; apenas demonstração",
+              "declared": true
+            }
+          ]
+        },
+        "budget": {
+          "status": "meets",
+          "summary": "Prato e bebida sem álcool: R$98 com serviço.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/budget",
+              "publisher": "Site fictício do restaurante",
+              "excerpt": "Jantar: prato R$72 + bebida R$17 + serviço de 10% = R$97,90.",
+              "checked_at": "2026-10-07",
+              "scope": "Unidade fictícia em Pinheiros; jantar de sexta; apenas demonstração",
+              "declared": true
+            }
+          ]
+        },
+        "vegetarian": {
+          "status": "meets",
+          "summary": "Duas opções vegetarianas no cardápio.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/vegetarian",
+              "publisher": "Site fictício do restaurante",
+              "excerpt": "Pratos vegetarianos: risoto de cogumelos e abóbora com lentilhas.",
+              "checked_at": "2026-10-07",
+              "scope": "Unidade fictícia em Pinheiros; jantar de sexta; apenas demonstração",
+              "declared": true
+            }
+          ]
+        },
+        "quiet": {
+          "status": "meets",
+          "summary": "O local descreve uma sala tranquila.",
+          "evidence": [
+            {
+              "url": "https://jardim-da-mesa.example.invalid/quiet",
+              "publisher": "Site fictício do restaurante",
+              "excerpt": "Sala pequena, sem música amplificada.",
+              "checked_at": "2026-10-07",
+              "scope": "Unidade fictícia em Pinheiros; jantar de sexta; apenas demonstração",
+              "declared": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "decisions": {},
+  "notes": {},
+  "feedback": ""
+}

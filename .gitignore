@@ -1,0 +1,5 @@
+.DS_Store
+.shortlist/
+__pycache__/
+research/
+prototypes/
