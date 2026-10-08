@@ -1,0 +1,62 @@
+[
+  {
+    "id": "usb-c-charging",
+    "domain": "products",
+    "criterion": "Laptop must support USB-C charging.",
+    "evidence": "Exact model partial specification: USB-C port. No charging statement."
+  },
+  {
+    "id": "exact-bed-inventory",
+    "domain": "accommodation",
+    "criterion": "Two separate enclosed bedrooms, each with a double bed.",
+    "evidence": "Complete inventory for the exact unit: enclosed bedroom 1 has one double bed; enclosed bedroom 2 has two single beds. No other beds."
+  },
+  {
+    "id": "mixed-unit-inventory",
+    "domain": "accommodation",
+    "criterion": "Two separate enclosed bedrooms, each with a double bed.",
+    "evidence": "One page advertises several distinct units. Generic inventory: one double bed and two singles. Inventory is not attributed to any unit; bedroom allocation is absent."
+  },
+  {
+    "id": "mandatory-fee",
+    "domain": "pricing",
+    "criterion": "Final total must be at most 200 in the quoted currency.",
+    "evidence": "Current exact applicable quote: base 180; mandatory fee 25; these are all charges, in the same currency."
+  },
+  {
+    "id": "branch-hours",
+    "domain": "services",
+    "criterion": "Service after 20:00 on Saturday.",
+    "evidence": "Current hours for the exact branch and requested Saturday: 10:00–18:00. No exceptions."
+  },
+  {
+    "id": "reimbursement-receipts",
+    "domain": "providers",
+    "criterion": "Provider offers direct billing to the insurer.",
+    "evidence": "Exact provider advertisement only mentions reimbursement receipts. This is a partial advertisement, not a complete billing-policy statement."
+  },
+  {
+    "id": "core-offline",
+    "domain": "software",
+    "criterion": "The core function must work offline.",
+    "evidence": "Applicable current documentation: core function requires internet. Mobile sync is optional."
+  },
+  {
+    "id": "included-parking",
+    "domain": "travel",
+    "criterion": "Parking must be included in the quoted rate.",
+    "evidence": "Exact applicable rate explicitly includes one parking space and all mandatory charges."
+  },
+  {
+    "id": "qualitative-noise",
+    "domain": "products",
+    "criterion": "Noise must be less than 40 dB.",
+    "evidence": "Exact product is described as quiet; no measurement or numeric noise limit is supplied."
+  },
+  {
+    "id": "conflicting-bike-rules",
+    "domain": "transport",
+    "criterion": "Bike accepted without removing handlebars.",
+    "evidence": "Current manual for exact bike service says handlebars may remain installed. Equally applicable current provider rules require handlebar removal. Neither source supersedes the other."
+  }
+]

@@ -68,7 +68,7 @@ See [INSTALL.md](INSTALL.md) for manual installation, updates, optional Instagra
 ## How it works
 
 1. **Set the brief.** Confirm your must-haves and preferences before research starts.
-2. **Check the options.** Inspect sources for the exact date, location, service, or listing you care about.
+2. **Check the options.** Inspect sources for the exact date, location, service, or listing you care about, including linked specifications and detailed conditions.
 3. **Review the evidence.** Compare ranked alternatives, open sources, and see what remains unresolved.
 4. **Keep and refine.** Save or pass, add optional reasons, and use **Save session** or **Refine** to preserve the review through the agent.
 
@@ -81,7 +81,11 @@ See [INSTALL.md](INSTALL.md) for manual installation, updates, optional Instagra
 | **? Unknown** | The decisive detail could not be verified. |
 | **! Conflicting** | Sources disagree; the disagreement stays visible. |
 
+Excluded candidates remain in a collapsed section. Expand it to review every criterion and its sources, with confirmed failures clearly marked.
+
 Must-have evidence comes before preferences. Unknowns remain unknown, even when there is a useful lead for checking them. Each option can show the next verification step, alongside source excerpts, dates, and scope.
+
+Before presenting results, Shortlist follows up on decisive gaps and checks whether each source applies to the exact option and requirement. An unknown explains whether the detail was missing, the source was inaccessible, or its applicability was unclear. A summary claim does not override contradictory detailed conditions.
 
 ![Shortlist in dark mode showing an unresolved closing time and its supporting source](docs/images/evidence-detail.png)
 
@@ -122,7 +126,8 @@ All committed examples and screenshots are synthetic. The optional Instagram hel
 | [`skills/shortlist/`](skills/shortlist/) | The installable skill: instructions, helpers, references, and UI. |
 | [`examples/`](examples/) | Fictional session fixtures used for screenshots and local previews. |
 | [`docs/images/`](docs/images/) | Screenshots of the real interface and the project mark. |
-| [`tests/`](tests/) | Session, interface, and optional Instagram helper checks. |
+| [`tests/`](tests/) | Session and interface checks, synthetic agent evaluations, and optional Instagram helper checks. |
+| [`scripts/eval_behavior.py`](scripts/eval_behavior.py), [`scripts/eval_research.py`](scripts/eval_research.py) | Optional agent evaluations for interpreting evidence and retrieving it from controlled pages. |
 | [`GLOSSARY.md`](GLOSSARY.md) | Shared vocabulary for criteria, evidence, and review decisions. |
 
 The core session helper uses only Python's standard library. Browser tooling is optional and installed separately.
@@ -133,7 +138,14 @@ The core session helper uses only Python's standard library. Browser tooling is 
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for browser checks, screenshot regeneration, and verification of agent handoffs.
+Optional evaluations use an authenticated Claude Code CLI:
+
+```sh
+python3 scripts/eval_behavior.py run
+python3 scripts/eval_research.py run
+```
+
+These test interpretation and controlled page retrieval, respectively. They do not establish live-web accuracy; explanations still need review. See [CONTRIBUTING.md](CONTRIBUTING.md) for evaluation scope, browser checks, screenshot regeneration, and verification of agent handoffs.
 
 ---
 

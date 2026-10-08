@@ -1,0 +1,55 @@
+{
+  "/display": {
+    "body": "<h1>Arc 27 official product page</h1><p>USB-C connectivity. See full model documentation.</p><a href=\"/docs/arc-27\">Technical specifications</a>"
+  },
+  "/docs/arc-27": {
+    "body": "<h1>Arc 27 technical specifications</h1><table><tr><th>Downstream USB ports</th><td>2 USB-A ports</td></tr></table><p>Other model Arc 24: no USB-A.</p>"
+  },
+  "/cottage": {
+    "body": "<h1>Bay Cottage</h1><p>One dog up to 20 kg is welcome.</p><details><summary>Detailed house rules</summary><p>Bay Cottage: one dog permitted, maximum weight 10 kg.</p></details><a href=\"/cottage/contact\">Contact information</a>"
+  },
+  "/cottage/contact": {
+    "body": "<p>Booking enquiries are accepted by email. No updated pet limit supplied.</p>"
+  },
+  "/ceramics": {
+    "body": "<h1>Four-session beginner ceramics</h1><p>Course tuition: 180.</p><a href=\"/ceramics/terms\">Booking terms and fees</a>"
+  },
+  "/ceramics/terms": {
+    "body": "<h1>Beginner ceramics booking terms</h1><details><summary>Required supplies</summary><p>All students pay a mandatory supplies fee of 25 in addition to the four-session tuition. There are no discounts or other fees.</p></details>"
+  },
+  "/repair": {
+    "body": "<h1>Orion repair workshop</h1><p>We service Orion machines.</p><a href=\"/repair/models\">Supported equipment</a>"
+  },
+  "/repair/models": {
+    "body": "<h1>Supported equipment</h1><p>Orion M1 and M2 repaired here. Repairs for Orion M4 are explicitly not offered.</p>"
+  },
+  "/accessible": {
+    "body": "<h1>Garden Cottage</h1><p>Step-free entrance.</p><a href=\"/accessible/specifications\">Access information</a>"
+  },
+  "/accessible/specifications": {
+    "body": "<h1>Garden Cottage access information</h1><p>Step-free entrance. Entrance door: 90 cm. Bathroom includes a shower seat. For further measurements, contact the property.</p>"
+  },
+  "/nova": {
+    "body": "<h1>Nova 24</h1><p>USB-C connection available. Charging wattage is described in the technical sheet.</p><a href=\"/nova/technical-sheet\">Technical sheet</a>"
+  },
+  "/nova/technical-sheet": {
+    "status": 403,
+    "body": "<h1>Access denied</h1><p>Authorization is required to access this document.</p>"
+  },
+  "/noteforge/help/notes": {
+    "status": 403,
+    "body": "<h1>Access unavailable</h1><p>This documentation route cannot be accessed.</p><a href=\"/noteforge/docs\">NoteForge documentation home</a>"
+  },
+  "/noteforge/docs": {
+    "body": "<h1>NoteForge official documentation</h1><a href=\"/noteforge/docs/deploy\">Desktop deployment</a><a href=\"/noteforge/docs/create\">Create a note</a><a href=\"/noteforge/docs/edit\">Manage notes</a>"
+  },
+  "/noteforge/docs/deploy": {
+    "body": "<h1>NoteForge Desktop deployment</h1><p>NoteForge Desktop runs entirely offline. Network access is needed only for optional synchronization and downloads.</p>"
+  },
+  "/noteforge/docs/create": {
+    "body": "<h1>Create a local note in NoteForge Desktop</h1><p>Select New note and enter text. New notes are saved in the local vault on your computer.</p>"
+  },
+  "/noteforge/docs/edit": {
+    "body": "<h1>Edit local notes in NoteForge Desktop</h1><p>Open an existing local note, change its text and save. Changes are written to your local vault. Other products may require an online account; this guide applies to NoteForge Desktop.</p>"
+  }
+}

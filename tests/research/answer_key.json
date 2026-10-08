@@ -1,0 +1,100 @@
+{
+  "display-ports": {
+    "status": "meets",
+    "required": [
+      "/display",
+      "/docs/arc-27"
+    ],
+    "allowed": [
+      "/display",
+      "/docs/arc-27"
+    ],
+    "unknown_reason": null,
+    "rationale": "Exact-model technical specifications establish two USB-A downstream ports."
+  },
+  "rental-pet": {
+    "status": "conflicting",
+    "required": [
+      "/cottage"
+    ],
+    "allowed": [
+      "/cottage",
+      "/cottage/contact"
+    ],
+    "unknown_reason": null,
+    "rationale": "The same rental page publishes incompatible 20 kg and 10 kg limits; neither is marked superseded."
+  },
+  "course-cost": {
+    "status": "fails",
+    "required": [
+      "/ceramics",
+      "/ceramics/terms"
+    ],
+    "allowed": [
+      "/ceramics",
+      "/ceramics/terms"
+    ],
+    "unknown_reason": null,
+    "rationale": "180 plus mandatory 25 equals 205, exceeding 200."
+  },
+  "repair-scope": {
+    "status": "fails",
+    "required": [
+      "/repair",
+      "/repair/models"
+    ],
+    "allowed": [
+      "/repair",
+      "/repair/models"
+    ],
+    "unknown_reason": null,
+    "rationale": "Detailed supported-model list explicitly excludes M4."
+  },
+  "rental-door": {
+    "status": "unknown",
+    "required": [
+      "/accessible",
+      "/accessible/specifications"
+    ],
+    "allowed": [
+      "/accessible",
+      "/accessible/specifications"
+    ],
+    "unknown_reason": "not_published",
+    "rationale": "Entrance width is irrelevant to bathroom width, which is not published."
+  },
+  "display-power": {
+    "status": "unknown",
+    "required": [
+      "/nova",
+      "/nova/technical-sheet"
+    ],
+    "allowed": [
+      "/nova",
+      "/nova/technical-sheet"
+    ],
+    "unknown_reason": "source_inaccessible",
+    "rationale": "USB-C alone does not establish power; linked technical sheet returns HTTP 403."
+  },
+  "docs-recovery": {
+    "status": "meets",
+    "required": [
+      "/noteforge/docs/deploy",
+      "/noteforge/docs/create",
+      "/noteforge/docs/edit"
+    ],
+    "allowed": [
+      "/noteforge/help/notes",
+      "/noteforge/docs",
+      "/noteforge/docs/deploy",
+      "/noteforge/docs/create",
+      "/noteforge/docs/edit"
+    ],
+    "initial_failure": {
+      "path": "/noteforge/help/notes",
+      "status": 403
+    },
+    "unknown_reason": null,
+    "rationale": "The initial guide is inaccessible, but the official documentation index leads to desktop-wide offline operation plus local note creation and editing guides. Together these support both requested actions without internet; the failed route does not establish that all evidence is inaccessible."
+  }
+}

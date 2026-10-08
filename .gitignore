@@ -2,4 +2,5 @@
 .shortlist/
 __pycache__/
 research/
+!tests/research/
 prototypes/

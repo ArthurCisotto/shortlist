@@ -1,0 +1,42 @@
+{
+  "usb-c-charging": {
+    "status": "unknown",
+    "rationale": "Port presence does not establish charging."
+  },
+  "exact-bed-inventory": {
+    "status": "fails",
+    "rationale": "A complete exact-unit inventory contradicts the second double bed."
+  },
+  "mixed-unit-inventory": {
+    "status": "unknown",
+    "rationale": "Inventory applicability to the requested unit is unresolved."
+  },
+  "mandatory-fee": {
+    "status": "fails",
+    "rationale": "180+25=205 exceeds 200."
+  },
+  "branch-hours": {
+    "status": "fails",
+    "rationale": "Applicable closing time precedes the required time."
+  },
+  "reimbursement-receipts": {
+    "status": "unknown",
+    "rationale": "Receipts establish neither direct billing nor its refusal."
+  },
+  "core-offline": {
+    "status": "fails",
+    "rationale": "Optional sync does not remove the core internet requirement."
+  },
+  "included-parking": {
+    "status": "meets",
+    "rationale": "The applicable rate directly supports the requirement."
+  },
+  "qualitative-noise": {
+    "status": "unknown",
+    "rationale": "A qualitative description does not establish a numeric bound."
+  },
+  "conflicting-bike-rules": {
+    "status": "conflicting",
+    "rationale": "Both applicable current claims must be preserved."
+  }
+}

@@ -60,5 +60,10 @@
   "Save and refine this search": "Salvar e refinar esta busca",
   "Save this search session": "Salvar esta sessão de busca",
   "Request opened. Await the agent’s saved-file confirmation. If no request appears, paste the message below.": "Pedido aberto. Aguarde a confirmação de salvamento. Se nenhum pedido aparecer, cole a mensagem abaixo.",
-  "Request could not be submitted. Changes are still pending; paste the message below into chat.": "Não foi possível enviar o pedido. As alterações continuam pendentes; cole a mensagem abaixo no chat."
+  "Request could not be submitted. Changes are still pending; paste the message below into chat.": "Não foi possível enviar o pedido. As alterações continuam pendentes; cole a mensagem abaixo no chat.",
+  "Excluded candidates": "Opções excluídas",
+  "These are not recommendations: each fails at least one must-have.": "Não são recomendações: cada opção deixa de atender a pelo menos um requisito obrigatório.",
+  "No eligible alternatives in this batch.": "Nenhuma opção elegível nesta busca.",
+  "No eligible alternatives": "Nenhuma opção elegível",
+  "Review any excluded candidates and their failed requirements, or refine the search. Must-haves will stay unchanged unless you confirm a change.": "Confira as opções excluídas e os requisitos que não atendem, ou refine a busca. Os requisitos obrigatórios só mudam com sua confirmação."
 }

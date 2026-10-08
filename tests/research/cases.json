@@ -1,0 +1,44 @@
+[
+  {
+    "id": "display-ports",
+    "domain": "products",
+    "criterion": "The exact Arc 27 display has at least two USB-A downstream ports.",
+    "start": "/display"
+  },
+  {
+    "id": "rental-pet",
+    "domain": "rentals",
+    "criterion": "Bay Cottage accepts one dog weighing 18 kg.",
+    "start": "/cottage"
+  },
+  {
+    "id": "course-cost",
+    "domain": "classes",
+    "criterion": "The four-session beginner ceramics course costs at most 200 including mandatory supplies.",
+    "start": "/ceramics"
+  },
+  {
+    "id": "repair-scope",
+    "domain": "services",
+    "criterion": "The shop repairs the Orion M4 machine.",
+    "start": "/repair"
+  },
+  {
+    "id": "rental-door",
+    "domain": "rentals",
+    "criterion": "The advertised cottage has a bathroom doorway at least 80 cm wide.",
+    "start": "/accessible"
+  },
+  {
+    "id": "display-power",
+    "domain": "products",
+    "criterion": "The Nova 24 display supplies at least 65 W over USB-C.",
+    "start": "/nova"
+  },
+  {
+    "id": "docs-recovery",
+    "domain": "software",
+    "criterion": "NoteForge Desktop supports creating and editing local notes without internet.",
+    "start": "/noteforge/help/notes"
+  }
+]

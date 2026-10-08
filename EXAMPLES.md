@@ -21,6 +21,8 @@ Check the exact branch's hours and menu, and show what remains uncertain.
 
 The demo separates three must-haves from one preference. Fully supported must-haves rank ahead of an unresolved closing time. A favorite remains visible while you review other options.
 
+Options with a confirmed must-have failure appear under **Excluded**, collapsed initially. Expand that section to inspect every criterion and its sources in the same card layout. If no option qualifies, these cards still show why the candidates were excluded; unresolved requirements remain **Unknown** rather than becoming failures.
+
 ## Follow the evidence
 
 ```text

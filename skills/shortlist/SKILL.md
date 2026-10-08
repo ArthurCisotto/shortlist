@@ -19,12 +19,29 @@ Include Instagram in discovery when relevant to the domain or requested by the u
 
 Use an available authorized browser or connector for richer social content when it supports that access. Otherwise disclose the limitation and continue with accessible sources; do not promise exhaustive Instagram coverage. Login-required, unavailable, or uninspected stories, highlights, and reels remain unverified. Briefly report which social sources were searched, inspected, or inaccessible with each batch. Use the same approach for other relevant social platforms. Cross-check formal facts with their owner: Instagram service claims do not establish professional registration or insurer eligibility.
 
+## Verify sources before presenting
+
+After discovery, verify the decisive requirements for each researched candidate before expanding the batch:
+
+1. Inspect the relevant detailed sections and linked primary documents, including expandable conditions, policies, specifications, and footnotes. Compare these with headline or summary claims; retain applicable contradictions instead of choosing the more convenient statement.
+2. For a decisive unresolved fact, make a targeted query using the exact candidate and missing requirement, and try a relevant alternative primary source or available browser when the first source is incomplete or inaccessible. Prioritize facts that change eligibility or the user's decision; stop when further attempts repeat the same access barrier or no useful source remains.
+3. In each unresolved check's existing `summary`, distinguish information not found in inspected sources, inaccessible evidence, and ambiguous applicability. State what was checked and the remaining gap; use `next_step` for the candidate's most useful follow-up. An access failure describes the inspection limit, not the unseen source's contents.
+
+This pass is complete when each decisive verdict has applicable inspected evidence or a documented unresolved gap after the targeted follow-up. Useful partial matches remain valid; uncertainty is not resolved by lowering requirements or assuming a favorable answer.
+
 ## Evaluate
 
 - `meets`: evidence supports the criterion; provider-declared services are labelled as such.
 - `fails`: evidence contradicts the criterion. A confirmed must-have failure excludes the candidate.
 - `unknown`: missing, inaccessible, ambiguous, or stale evidence. Keep it as a clearly provisional partial match.
 - `conflicting`: unresolved contradictory claims. Preserve both sources, mark needs verification, and rank below unknown must-have evidence.
+
+For every criterion, reason from the source before assigning a status:
+
+1. Read the surrounding source context and identify what the claim applies to. Extract the relevant statement with its quantities, types, conditions, and scope; preserve the distinction between a complete description and a partial mention.
+2. Compare that statement with the user's actual requirement, including each required clause and any acceptable alternatives. Separate what the source says from your interpretation. Explain any deduction, conversion, or calculation; matching words alone does not establish a match.
+3. Check whether the conclusion depends on an unstated assumption. Seek the missing decisive evidence when accessible; otherwise mark the check `unknown` and name the assumption or gap. An omission in a partial source is a gap; an explicit, applicable limit or complete inventory can establish a failure. Preserve contradictory applicable evidence as `conflicting`.
+4. Before presenting, audit both passes and failures for another plausible reading of the cited evidence under the same scope and conditions. Resolve any ambiguity that would change the verdict or keep it uncertain. The summary must make the source fact, its applicability, and the reason for the verdict understandable to the user. Every required clause needs support for `meets`; one established contradiction is enough for `fails`.
 
 The helper ranks must-have statuses first, then cited verification leads among unknown must-haves, then supported preferences with unknown preferred over failed/conflicting preferences. Use it instead of inventing percentages. Set `lead:true` only for an unknown check with inspected, cited evidence of a relevant verification route; a search result or unrelated source is insufficient. The lead remains unknown and never outweighs supported must-haves. Add a concise `next_step` for unresolved decisive criteria. If every result misses the same decisive fact, target that bottleneck before expanding the batch; ask for a missing user-specific input such as the insurance plan when needed. Present remaining options as leads with that limitation, rather than claiming the search is resolved.
 
