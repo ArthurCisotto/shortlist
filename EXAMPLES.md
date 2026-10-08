@@ -1,6 +1,6 @@
 # Shortlist in practice
 
-[← README](README.md) · [Install](INSTALL.md)
+[← README](README.md) · [Install](INSTALL.md) · [More search ideas](docs/SEARCHES.md)
 
 Give Shortlist the details that decide whether an option is useful: dates, location, budget, required features, and preferences. It confirms the brief before researching.
 

@@ -10,7 +10,7 @@ A skill for Codex and Claude Code that researches options against multiple speci
 
 **Source-backed research · Save & refine · English + Português**
 
-[Install](INSTALL.md) · [Examples](EXAMPLES.md) · [How it works](#how-it-works) · [Contribute](CONTRIBUTING.md)
+[Install](INSTALL.md) · [Search ideas](docs/SEARCHES.md) · [Examples](EXAMPLES.md) · [How it works](#how-it-works) · [Contribute](CONTRIBUTING.md)
 
 </div>
 
@@ -20,7 +20,7 @@ A skill for Codex and Claude Code that researches options against multiple speci
 
 ## For searches with more than one filter
 
-You need a restaurant open after 10 pm, within your budget, with vegetarian mains and a quiet room. Or a place to stay with specific sleeping arrangements, in the right area, available on your dates. Those details rarely live in one searchable database. Checking each option means reading menus, listings, schedules, and reviews, then keeping track of which requirements actually match.
+You need a monitor that charges a laptop and switches a keyboard between two computers. A rental with two double bedrooms and a private enclosed yard that accepts two large dogs. Or a repair shop that handles the imported 120 V version of your espresso machine. Those details rarely live in one searchable database. Checking each option means reading specifications, detailed policies, listings, and reviews, then keeping track of which requirements actually match.
 
 Shortlist takes that detailed brief, researches each requirement, and puts the evidence beside each option. It flags missing or conflicting information so you can see what still needs checking. Review with **Save** and **Pass**, leave a reason when it helps, and ask for a better next batch.
 
@@ -95,12 +95,15 @@ Before presenting results, Shortlist follows up on decisive gaps and checks whet
 
 | Search | Details worth checking |
 | --- | --- |
-| **Restaurants** | Branch-specific hours, menus, budget, dietary options, atmosphere. |
-| **Places to stay** | Dates, guests, actual sleeping arrangements, total cost, location. |
-| **Service providers** | Exact service, registration where relevant, appointment format, billing. |
-| **Products and listings** | Required specifications, availability, seller claims, comparable costs. |
+| **Places to stay** | Exact-unit beds, pet number and weight limits, enclosed yards, dated total cost. |
+| **Products and listings** | Exact-model ports, charging power, KVM support, regional warranty, delivered price. |
+| **Repair and other services** | Imported equipment, voltage, specific faults, estimates, repair warranty. |
+| **Courses and workshops** | Actual cohort schedules, teaching format, class size, materials and firing fees. |
+| **Software** | Offline operations, account requirements, export flows, encryption conditions, plan limits. |
+| **Museums and workspaces** | Step-free entrances, accessible facilities, walk-in rules, day-pass restrictions. |
+| **Restaurants and event venues** | Exact-room capacity, menus, minimum spend, extra fees, cancellation terms, atmosphere. |
 
-[EXAMPLES.md](EXAMPLES.md) includes ready-to-use prompts, a refinement conversation, and a Portuguese example.
+[Search ideas](docs/SEARCHES.md) has detailed briefs across these domains, including a rental for two dogs, an imported espresso-machine repair, and a monitor shared by two computers. [EXAMPLES.md](EXAMPLES.md) walks through review and refinement, with screenshots and a Portuguese example.
 
 ## Keep your search moving
 
